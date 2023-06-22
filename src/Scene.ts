@@ -1,4 +1,5 @@
-import { /*AnimatedSprite,*/ Sprite, Container, /*Graphics,*/ /*Texture,*/ /*Text,*/ /*NineSlicePlane*/ } from "pixi.js";
+import { /*AnimatedSprite,*/ Container, /*Texture,*/  /*NineSlicePlane*/ } from "pixi.js";
+import { PantallaReiniciar } from "./PantallaReiniciar";
 //import { NaveConFuego } from "./NaveConFuego";
 
 export class Scene extends Container{
@@ -72,13 +73,8 @@ export class Scene extends Container{
         */
         
         //Pantalla de reiniciar nivel
-         //Nine-Slice Plane
-        const fondo = Sprite.from("Fondo");
-        fondo.width = 320;
-        fondo.height = 240;
-        fondo.position.x = 200;
-        fondo.position.y = 70;
-        fondo.scale.set(0.3);
-        this.addChild(fondo);
+        const PantallaRetry : PantallaReiniciar = new PantallaReiniciar();
+        PantallaRetry.scale.set(1);
+        this.addChild(PantallaRetry);
     }
 }
