@@ -7,4 +7,8 @@ export const assets = [{url:"clampy.png",name:"clampy"},
                         {url:"Fuego5.png",name:"Fuego5"},
                         {url:"Fuego6.png",name:"Fuego6"},
                         {url:"Espacio.jpg",name:"Espacio"},
+                        {url:"Fondo.png",name:"Fondo"},
+                        {url:"Retry.png",name:"Retry"},
+                        {url:"Configuracion.png",name:"Config"},
+                        {url:"Cerrar.png",name:"Cerrar"},
                         {url:"Estrella.png",name:"Estrella"}];

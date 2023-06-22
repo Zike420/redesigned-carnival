@@ -1,5 +1,5 @@
-import { AnimatedSprite, Container, Graphics, Texture, Text, NineSlicePlane } from "pixi.js";
-import { NaveConFuego } from "./NaveConFuego";
+import { /*AnimatedSprite,*/ Sprite, Container, /*Graphics,*/ /*Texture,*/ /*Text,*/ /*NineSlicePlane*/ } from "pixi.js";
+//import { NaveConFuego } from "./NaveConFuego";
 
 export class Scene extends Container{
 
@@ -8,6 +8,7 @@ export class Scene extends Container{
 
         //Nine-Slice Plane
         //const fondo = Sprite.from("Espacio");
+        /*
         const fondo = new NineSlicePlane(
             Texture.from("Espacio"),35,35,35,35
         );
@@ -15,8 +16,10 @@ export class Scene extends Container{
         fondo.height = 480;
         fondo.scale.set(1);
         this.addChild(fondo);
+        */
 
         //Crearcion de contenedores(con clase) de nave con fuego
+        /*
         const NaveWithFuego : NaveConFuego = new NaveConFuego();
         NaveWithFuego.scale.set(1);
         this.addChild(NaveWithFuego);
@@ -34,8 +37,10 @@ export class Scene extends Container{
         FuegoAnimado.play();
         FuegoAnimado.animationSpeed = 0.2;
         this.addChild(FuegoAnimado);
-
+        */
+        
         //Dibujar en pantalla
+        /*
         const myGraph : Graphics = new Graphics();
             //640 X 480
         myGraph.lineStyle({color: 0xEA61DA, width: 3, alpha:1});
@@ -54,14 +59,26 @@ export class Scene extends Container{
 
         myGraph.position.set(640/2,480/2);
         this.addChild(myGraph);
+        */
 
         //texto
+        /*
         const myText : Text = new Text("Nave espacial 5", {fontSize: 50, fill: 0xF53228, fontFamily:"Arial"});
         myText.text = "Nave";
         myText.position.x = 480/2;
         myText.angle = 0;
         myText.scale.set(1); 
         this.addChild(myText);
-
+        */
+        
+        //Pantalla de reiniciar nivel
+         //Nine-Slice Plane
+        const fondo = Sprite.from("Fondo");
+        fondo.width = 320;
+        fondo.height = 240;
+        fondo.position.x = 200;
+        fondo.position.y = 70;
+        fondo.scale.set(0.3);
+        this.addChild(fondo);
     }
 }
