@@ -1,6 +1,6 @@
 import { Application, Loader } from 'pixi.js'
 import { assets } from './assets';
-import { Scene } from './Scene';
+import { Scene } from './Scene/Scene';
 
 //Aplicacion pixi, parte que renderiza y da tamaño
 const app = new Application({
