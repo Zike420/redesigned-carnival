@@ -1,0 +1,10 @@
+export const assets = [{url:"clampy.png",name:"clampy"},
+                        {url:"Nave.png",name:"Nave"},
+                        {url:"Fuego1.png",name:"Fuego1"},
+                        {url:"Fuego2.png",name:"Fuego2"},
+                        {url:"Fuego3.png",name:"Fuego3"},
+                        {url:"Fuego4.png",name:"Fuego4"},
+                        {url:"Fuego5.png",name:"Fuego5"},
+                        {url:"Fuego6.png",name:"Fuego6"},
+                        {url:"Espacio.jpg",name:"Espacio"},
+                        {url:"Estrella.png",name:"Estrella"}];
