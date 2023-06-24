@@ -1,5 +1,6 @@
 import { Container, Sprite, Graphics, Text, Texture, AnimatedSprite } from "pixi.js";
 import { Button } from "../Button";
+import { Keyboard } from "../Keyboard";
 
 export class PantallaReiniciar extends Container{
     //Variables
@@ -17,6 +18,7 @@ export class PantallaReiniciar extends Container{
                                                                     Texture.from("Retry8"),
                                                                     Texture.from("Retry9"),
                                                                     Texture.from("Retry10")],true);
+    private lastKeyPressed:Text;
 
     //Constructor
     constructor(){
@@ -57,7 +59,8 @@ export class PantallaReiniciar extends Container{
         this.addChild(CerrarGraph);
 
         //Imagen Cerrar
-        this.Cerrar = new Button(Texture.from("Cerrar"), Texture.from("Cerrar2"), Texture.from("Cerrar1"), this.onButtonClick);
+        this.Cerrar = new Button(Texture.from("Cerrar"), Texture.from("Cerrar2"), Texture.from("Cerrar1") /*this.onButtonClick*/);
+        this.Cerrar.on("Click apretado", this.onButtonClick, this);
         this.Cerrar.width = 320;
         this.Cerrar.height = 240;
         this.Cerrar.position.x = 415;
@@ -106,13 +109,45 @@ export class PantallaReiniciar extends Container{
          this.ReiniciarAnimado.on("mouseout", this.onMouseOut, this);
          this.ReiniciarAnimado.interactive = true;
          this.addChild(this.ReiniciarAnimado);
+
+        //Keys y texto
+        this.lastKeyPressed = new Text("Esperando...",{fontSize: 20, fill: 0xF53228});
+        this.lastKeyPressed.anchor.set(0.5);
+        this.lastKeyPressed.x = fondo.position.x + 120;
+        this.lastKeyPressed.y = fondo.position.y * 3;
+        this.addChild(this.lastKeyPressed);
+
+         document.addEventListener("keydown",this.onKeyDown.bind(this));
+         document.addEventListener("keyup",this.onKeyUp.bind(this));
+
+         Keyboard.down.on("KeyA", this.onKeyA, this)
     }
    
     //Funciones
-    private onButtonClick():void{
-        console.log("my button");
+
+    ////Keys////
+    private onKeyDown(e:KeyboardEvent):void{
+        console.log("tecla presionada",e.code);
+        this.lastKeyPressed.text = e.code;
+        if(e.code == "KeyR"){
+            console.log("Recargar!");
+        }
+    }
+    private onKeyUp(e:KeyboardEvent):void{
+        console.log("tecla soltada",e.code);
+        this.lastKeyPressed.text = e.code;
     }
 
+    private onKeyA():void{
+        console.log("Aprete la A", this);
+    }
+
+    ////Button para cerrar////
+    private onButtonClick():void{
+        console.log("my button", this/*Keyboard.state.get("KeyR")*/);
+    }
+
+    ////Funciones para el reiniciar////
     private onMouseOver():void {
         console.log("mouse enter", this);
         this.ReiniciarAnimado.play();
@@ -131,6 +166,8 @@ export class PantallaReiniciar extends Container{
         console.log("mouse up", this);
         this.ReiniciarAnimado.play();
     }
+    
+    ////Touch y Pointer////
     /*
     private onTouchStart():void {
         console.log("touch start", this);

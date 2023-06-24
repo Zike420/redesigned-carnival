@@ -2,18 +2,18 @@ import { Container, Sprite, Texture } from "pixi.js";
 
 export class Button extends Container{
     //Variables
-    private callback:Function;
+    //private callback:Function;
     private spr:Sprite;
     private def:Texture;
     private down:Texture;
     private over:Texture;
 
     //Constructor
-    constructor(def:Texture, down:Texture, over:Texture,callback:Function){
+    constructor(def:Texture, down:Texture, over:Texture,/*callback:Function*/){
         super();
 
         /////////////
-        this.callback = callback;
+        //this.callback = callback;
         this.def = def;
         this.down = down;
         this.over = over;
@@ -39,7 +39,7 @@ export class Button extends Container{
     }
     
     private onMouseDown():void {
-        this.callback();
+        this.emit("Click apretado");
         this.spr.texture = this.down;
     }
     private onMouseUp():void {

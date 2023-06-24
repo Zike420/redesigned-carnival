@@ -1,5 +1,6 @@
 import { Application, Loader } from 'pixi.js'
 import { assets } from './assets';
+import { Keyboard } from './Keyboard';
 import { Scene } from './Scene/Scene';
 
 //Aplicacion pixi, parte que renderiza y da tamaño
@@ -11,6 +12,8 @@ const app = new Application({
 	width: 640,
 	height: 480
 });
+
+Keyboard.initialize();
 
 //Resize, acomoda el tamaño de pantalla de juego
 window.addEventListener("resize",()=>{
