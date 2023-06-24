@@ -1,12 +1,12 @@
-import { Container, Sprite, Graphics, Text } from "pixi.js";
+import { Container, Sprite, Graphics, Text, Texture, AnimatedSprite } from "pixi.js";
+//import { Button } from "../Button";
 
 export class PantallaReiniciar extends Container{
     //Variables
     private Retry:Sprite;
-    private myGraph1 : Graphics = new Graphics();
-    private myGraph4 : Graphics = new Graphics();
-    private myGraph5 : Graphics = new Graphics();
-
+    private RetryGraph : Graphics = new Graphics();
+    private ReiniciarAnimado: AnimatedSprite = new AnimatedSprite([Texture.from("Retry"),],false);
+    
     //Constructor
     constructor(){
         super();
@@ -37,30 +37,30 @@ export class PantallaReiniciar extends Container{
         this.addChild(myText2);
 
         //Circulo de reiniciar
-        this.myGraph1.lineStyle({color: 0xFFFFFF, width: 3, alpha:1});
-        this.myGraph1.beginFill(0xEA61DA,1);
-        this.myGraph1.drawCircle(0,0,30);
-        this.myGraph1.endFill();
-        this.myGraph1.position.set(323,323);
-        this.addChild(this.myGraph1);
+        this.RetryGraph.lineStyle({color: 0xFFFFFF, width: 3, alpha:1});
+        this.RetryGraph.beginFill(0xEA61DA,1);
+        this.RetryGraph.drawCircle(0,0,30);
+        this.RetryGraph.endFill();
+        this.RetryGraph.position.set(323,323);
+        this.addChild(this.RetryGraph);
 
         //Circulo de cerrar
-        const myGraph2 : Graphics = new Graphics();
-        myGraph2.lineStyle({color: 0xFFFFFF, width: 1, alpha:1});
-        myGraph2.beginFill(0xEA61DA,1);
-        myGraph2.drawCircle(0,0,8);
-        myGraph2.endFill();
-        myGraph2.position.set(422,87);
-        this.addChild(myGraph2);
+        const CerrarGraph : Graphics = new Graphics();
+        CerrarGraph.lineStyle({color: 0xFFFFFF, width: 1, alpha:1});
+        CerrarGraph.beginFill(0xEA61DA,1);
+        CerrarGraph.drawCircle(0,0,8);
+        CerrarGraph.endFill();
+        CerrarGraph.position.set(422,87);
+        this.addChild(CerrarGraph);
 
         //Circulo de configuracion
-        const myGraph3 : Graphics = new Graphics();
-        myGraph3.lineStyle({color: 0xFFFFFF, width: 1, alpha:1});
-        myGraph3.beginFill(0xEA61DA,1);
-        myGraph3.drawCircle(0,0,8);
-        myGraph3.endFill();
-        myGraph3.position.set(397,87);
-        this.addChild(myGraph3);
+        const ConfGraph : Graphics = new Graphics();
+        ConfGraph.lineStyle({color: 0xFFFFFF, width: 1, alpha:1});
+        ConfGraph.beginFill(0xEA61DA,1);
+        ConfGraph.drawCircle(0,0,8);
+        ConfGraph.endFill();
+        ConfGraph.position.set(397,87);
+        this.addChild(ConfGraph);
 
         //Imagen Cerrar
         const Cerrar = Sprite.from("Cerrar");
@@ -81,6 +81,7 @@ export class PantallaReiniciar extends Container{
         this.Retry.position.x = 300;
         this.Retry.position.y = 300;
         this.Retry.scale.set(1);
+      
         this.Retry.on("mousedown", this.onMouseDown, this);
         this.Retry.on("mouseup", this.onMouseUp, this);
         this.Retry.on("mouseover", this.onMouseOver, this);
@@ -104,32 +105,39 @@ export class PantallaReiniciar extends Container{
     //Funciones
     private onMouseOver():void {
         console.log("mouse enter", this);
-        this.myGraph4.lineStyle({color: 0xFFFFFF, width: 3, alpha:1});
-        this.myGraph4.beginFill(0x56F728,1);
-        this.myGraph4.drawCircle(0,0,30);
-        this.myGraph4.endFill();
-        this.myGraph4.position.set(323,323);
-        this.addChild(this.myGraph4);
-        this.addChild(this.Retry);
+        this.ReiniciarAnimado = new AnimatedSprite(
+            [
+                Texture.from("Retry"),
+                Texture.from("Retry1"),
+                Texture.from("Retry2"),
+                Texture.from("Retry3"),
+                Texture.from("Retry4"),
+                Texture.from("Retry5"),
+                Texture.from("Retry6"),
+                Texture.from("Retry7"),
+                Texture.from("Retry8"),
+                Texture.from("Retry9"),
+                Texture.from("Retry10")
+            ], true
+        );
+        this.ReiniciarAnimado.play();
+        this.ReiniciarAnimado.animationSpeed = 0.2;
+        this.addChild(this.ReiniciarAnimado);
+        
     }
     private onMouseOut():void {
         console.log("mouse exit", this);
-        this.myGraph4.clear();
-        this.addChild(this.Retry);
+        this.ReiniciarAnimado.stop();
+        //this.addChild(this.Retry);
     }
     private onMouseDown():void {
         console.log("mouse down", this);
-        this.myGraph5.lineStyle({color: 0xFFFFFF, width: 3, alpha:1});
-        this.myGraph5.beginFill(0x8ED48C,1);
-        this.myGraph5.drawCircle(0,0,30);
-        this.myGraph5.endFill();
-        this.myGraph5.position.set(323,323);
-        this.addChild(this.myGraph5);
+       
         this.addChild(this.Retry);
     }
     private onMouseUp():void {
         console.log("mouse up", this);
-        this.myGraph5.clear();
+       
         this.addChild(this.Retry);
     }
     /*
