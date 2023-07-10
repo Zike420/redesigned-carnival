@@ -1,8 +1,10 @@
 import { /*AnimatedSprite,*/ Container, /*Texture,*/  /*NineSlicePlane*/ } from "pixi.js";
 import { PantallaReiniciar } from "../Containers/PantallaReiniciar";
+import { TickerScene } from "../TickerScene";
 //import { NaveConFuego } from "./NaveConFuego";
 
 export class Scene extends Container{
+	update: any;
 
     constructor(){
         super();
@@ -76,5 +78,9 @@ export class Scene extends Container{
         const PantallaRetry : PantallaReiniciar = new PantallaReiniciar();
         PantallaRetry.scale.set(1);
         this.addChild(PantallaRetry);
+
+        const TickerScene0 : TickerScene = new TickerScene();
+        TickerScene0.scale.set(1);
+        this.addChild(TickerScene0);
     }
 }

@@ -1,4 +1,4 @@
-import { Application, Loader } from 'pixi.js'
+import { Application, Loader, Ticker } from 'pixi.js'
 import { assets } from './assets';
 import { Keyboard } from './Keyboard';
 import { Scene } from './Scene/Scene';
@@ -75,6 +75,10 @@ Loader.shared.onComplete.add(()=>{
 	//Mostrar en pantalla
 	const myScene = new Scene();
 	app.stage.addChild(myScene);
+
+	Ticker.shared.add(function(deltaFrame){
+		myScene.update(Ticker.shared.deltaMS, deltaFrame);
+	});
 
 })
 
