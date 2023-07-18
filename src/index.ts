@@ -1,8 +1,10 @@
 import { Application, Loader, Ticker } from 'pixi.js'
 import { assets } from './assets';
 import { Keyboard } from './Keyboard';
-//import { Scene } from './Scene/Scene';
 import { TickerScene } from './TickerScene';
+
+export const WIDTH = 640;
+export const HEIGHT = 480;
 
 //Aplicacion pixi, parte que renderiza y da tamaño
 const app = new Application({
@@ -10,8 +12,8 @@ const app = new Application({
 	resolution: window.devicePixelRatio || 1,
 	autoDensity: true,
 	backgroundColor: 0x6495ed,
-	width: 640,
-	height: 480
+	width: WIDTH,
+	height: HEIGHT
 });
 
 Keyboard.initialize();
@@ -45,6 +47,9 @@ window.dispatchEvent(new Event("resize"));
 Loader.shared.add(assets);
 
 Loader.shared.onComplete.add(()=>{
+
+	//const myScene0 = new Scene();
+	//app.stage.addChild(myScene0);
 
 	//Mostrar en pantalla
 	const myScene = new TickerScene();
