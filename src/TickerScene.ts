@@ -1,7 +1,7 @@
-import { AnimatedSprite, Texture } from "pixi.js";
-import { SceneBase } from "./SceneBase";
+import { AnimatedSprite, Container, Texture } from "pixi.js";
+import { IUpdateable } from "./IUpdateable";
 
-export class TickerScene extends SceneBase{
+export class TickerScene extends Container implements IUpdateable{
 
     private fuegoAnimado: AnimatedSprite;
 
@@ -21,11 +21,16 @@ export class TickerScene extends SceneBase{
         this.addChild(this.fuegoAnimado);
     }
 
-    public override update(_deltaTime:number, _deltaFrame:number){
-        this.fuegoAnimado.update(_deltaFrame);
+    update(_deltaTime: number, deltaFrame: number): void {
+       this.fuegoAnimado.update(deltaFrame);
+    }
+
+    /*
+    public override update(_deltaTime:number, deltaFrame:number){
+        this.fuegoAnimado.update(deltaFrame);
     }
     
-    /*private update(deltaFrame:number){
+    private update(deltaFrame:number){
         console.log(deltaFrame, Ticker.shared.FPS, Ticker.shared.deltaMS);
         console.log(Keyboard.state.get("KeyA"))
     }*/
