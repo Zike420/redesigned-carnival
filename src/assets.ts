@@ -29,5 +29,10 @@ export const assets = [{url:"clampy.png",name:"clampy"},
                         {url:"Cerrar/Cerrar.png",name:"Cerrar"},
                         {url:"Cerrar/Cerrar1.png",name:"Cerrar1"},
                         {url:"Cerrar/Cerrar2.png",name:"Cerrar2"},
-                        {url:"Estrella.png",name:"Estrella"}
+                        {url:"Estrella.png",name:"Estrella"},
+                        //Fondo y Sol y Luna(plataforma)
+                        {url:"Fondo/FondoNoche.jpg",name:"FondoNoche"},
+                        {url:"Fondo/FondoSoleado.jpg",name:"FondoSoleado"},
+                        {url:"Fondo/Sol.png",name:"Sol"},
+                        {url:"Fondo/Luna.png",name:"Luna"}
                     ];
