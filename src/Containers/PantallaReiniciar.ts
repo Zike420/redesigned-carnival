@@ -1,6 +1,6 @@
 import { Container, Sprite, Graphics, Text, Texture, AnimatedSprite } from "pixi.js";
-import { Button } from "../Button";
-import { Keyboard } from "../Keyboard";
+import { Button } from "../UI/Button";
+import { Keyboard } from "../UI/Keyboard";
 
 export class PantallaReiniciar extends Container{
     //Variables

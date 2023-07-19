@@ -1,7 +1,7 @@
 import { AnimatedSprite, Container, Graphics, Texture } from "pixi.js";
-import { HEIGHT, WIDTH } from ".";
-import { IUpdateable } from "./IUpdateable";
-import { PhysicsContainer } from "./PhysicsContainer";
+import { HEIGHT, WIDTH } from "..";
+import { IUpdateable } from "../IUpdateable";
+import { PhysicsContainer } from "../Containers/PhysicsContainer";
 
 export class TickerScene extends Container implements IUpdateable{
 

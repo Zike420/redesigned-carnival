@@ -1,7 +1,7 @@
 import { Application, Loader, Ticker } from 'pixi.js'
 import { assets } from './assets';
-import { Keyboard } from './Keyboard';
-import { TickerScene } from './TickerScene';
+import { Keyboard } from './UI/Keyboard';
+import { TickerScene } from './Scene/TickerScene';
 
 export const WIDTH = 640;
 export const HEIGHT = 480;

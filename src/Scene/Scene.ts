@@ -1,6 +1,6 @@
 import { /*AnimatedSprite,*/ Container, /*Texture,*/  /*NineSlicePlane*/ } from "pixi.js";
 import { PantallaReiniciar } from "../Containers/PantallaReiniciar";
-import { TickerScene } from "../TickerScene";
+import { TickerScene } from "./TickerScene";
 //import { NaveConFuego } from "./NaveConFuego";
 
 export class Scene extends Container{
