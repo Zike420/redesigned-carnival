@@ -1,4 +1,4 @@
-import {Container, Sprite} from "pixi.js";
+import {Container, Texture, TilingSprite} from "pixi.js";
 import { HEIGHT, WIDTH } from "..";
 import { IUpdateable } from "../IUpdateable";
 //import { PhysicsContainer } from "../Containers/PhysicsContainer";
@@ -9,29 +9,48 @@ import { checkCollision } from "../Containers/IHitbox";
 export class TickerScene extends Container implements IUpdateable{
 
     private playerFuego : Player;
-    private FondoSoleado : Sprite;
+    private world : Container;
     private Plataformas:Plataform[];
+    private FondoNoche: TilingSprite;
 
     constructor(){
         super();
+        this.world = new Container();
 
-        this.FondoSoleado = Sprite.from("FondoSoleado");
-        this.addChild(this.FondoSoleado);
+        this.FondoNoche = new TilingSprite(Texture.from("FondoNoche"),WIDTH, HEIGHT);
+        this.addChild(this.FondoNoche);
 
         this.Plataformas = [];
 
-        const Plataforma1 = new Plataform();
-        Plataforma1.position.set(50, 300);
-        this.addChild(Plataforma1);
-        this.Plataformas.push(Plataforma1);
+        let Plataforma = new Plataform();
+        Plataforma.position.set(50, 300);
+        this.world.addChild(Plataforma);
+        this.Plataformas.push(Plataforma);
 
-        const Plataforma2 = new Plataform();
-        Plataforma2.position.set(400, 300);
-        this.addChild(Plataforma2);
-        this.Plataformas.push(Plataforma2);
+        Plataforma = new Plataform();
+        Plataforma.position.set(400, 300);
+        this.world.addChild(Plataforma);
+        this.Plataformas.push(Plataforma);
+        
+        Plataforma = new Plataform();
+        Plataforma.position.set(900, 250);
+        this.world.addChild(Plataforma);
+        this.Plataformas.push(Plataforma);
+        
+        Plataforma = new Plataform();
+        Plataforma.position.set(1300, 100);
+        this.world.addChild(Plataforma);
+        this.Plataformas.push(Plataforma);
+        
+        Plataforma = new Plataform();
+        Plataforma.position.set(1500, 400);
+        this.world.addChild(Plataforma);
+        this.Plataformas.push(Plataforma);
 
         this.playerFuego = new Player();
-        this.addChild(this.playerFuego);
+        this.world.addChild(this.playerFuego);
+
+        this.addChild(this.world);
     }
 
     public update(deltaTime: number, _deltaFrame: number): void {
@@ -64,13 +83,16 @@ export class TickerScene extends Container implements IUpdateable{
             }
         }
             
-        
+        //Camara
+        this.world.x = -this.playerFuego.x * this.worldTransform.a + WIDTH/2;
+        this.FondoNoche.tilePosition.x = this.world.x * 0.2;
 
         //delta time en segundos
         //const dt = deltaTime / 1000;
        // this.physFuego.update(dt);
         
         //limite horizontal
+        /* ACORDARSE DE SACAR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---------
         if(this.playerFuego.x > WIDTH){
             //Limite derecha
                 this.playerFuego.x = WIDTH;
@@ -82,6 +104,7 @@ export class TickerScene extends Container implements IUpdateable{
             //this.playerFuego.speed.x = Math.abs(this.playerFuego.speed.x);
             //this.playerFuego.scale.x = 1;
         }
+        */
 
         //limite vertical
         if(this.playerFuego.y > HEIGHT){
