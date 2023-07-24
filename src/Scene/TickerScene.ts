@@ -5,17 +5,20 @@ import { IUpdateable } from "../IUpdateable";
 import { Player } from "../Containers/Player";
 import { Plataform } from "../Containers/Plataform";
 import { checkCollision } from "../Containers/IHitbox";
+import { sound } from "@pixi/sound";
 
 export class TickerScene extends Container implements IUpdateable{
-
+    
     private playerFuego : Player;
     private world : Container;
     private Plataformas:Plataform[];
     private FondoNoche: TilingSprite;
-
+    
     constructor(){
         super();
         this.world = new Container();
+        
+        sound.play("DarkCat")
 
         this.FondoNoche = new TilingSprite(Texture.from("FondoNoche"),WIDTH, HEIGHT);
         this.addChild(this.FondoNoche);
