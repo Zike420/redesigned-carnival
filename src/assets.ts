@@ -34,8 +34,5 @@ export const assets = [{url:"clampy.png",name:"clampy"},
                         {url:"Fondo/FondoNoche.jpg",name:"FondoNoche"},
                         {url:"Fondo/FondoSoleado.jpg",name:"FondoSoleado"},
                         {url:"Fondo/Sol.png",name:"Sol"},
-                        {url:"Fondo/Luna.png",name:"Luna"},
-
-                        //sonido
-                        {url:"Musica/darkcat-MAPLEADVENTURE.mp3",name:"DarkCat"}
+                        {url:"Fondo/Luna.png",name:"Luna"}
                     ];
