@@ -21,8 +21,9 @@ export class TickerScene extends Container implements IUpdateable{
         this.FondoNoche = new TilingSprite(Texture.from("FondoNoche"),WIDTH, HEIGHT);
         this.addChild(this.FondoNoche);
 
-        sound.play("DarkCat");
+        const drk = sound.find("DarkCat");
         
+        drk.play({volume:0.1});
 
         this.Plataformas = [];
 
