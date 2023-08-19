@@ -1,10 +1,11 @@
 import { Application, Loader, Ticker } from 'pixi.js'
 import { assets } from './assets';
 import { Keyboard } from './UI/Keyboard';
-import { TickerScene } from './Scene/TickerScene';
+import { TickerScene } from './Scene/SFNV';
 
-export const WIDTH = 640;
-export const HEIGHT = 480;
+
+export const WIDTH = 1920;
+export const HEIGHT = 1080;
 
 //Aplicacion pixi, parte que renderiza y da tamaño
 const app = new Application({

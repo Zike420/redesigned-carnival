@@ -1,5 +1,4 @@
-export const assets = [{url:"clampy.png",name:"clampy"},
-                        {url:"Nave.png",name:"Nave"},
+export const assets = [
                         //Fuego
                         {url:"Fuego/Fuego2.png",name:"Fuego2"},
                         {url:"Fuego/Fuego3.png",name:"Fuego3"},
@@ -34,5 +33,7 @@ export const assets = [{url:"clampy.png",name:"clampy"},
                         {url:"Fondo/FondoNoche.jpg",name:"FondoNoche"},
                         {url:"Fondo/FondoSoleado.jpg",name:"FondoSoleado"},
                         {url:"Fondo/Sol.png",name:"Sol"},
-                        {url:"Fondo/Luna.png",name:"Luna"}
+                        {url:"Fondo/Luna.png",name:"Luna"},
+
+                        {url:"Mapa SF calles lvl.png",name:"SFMap"}
                     ];
