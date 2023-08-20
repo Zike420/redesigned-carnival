@@ -1,4 +1,4 @@
-import { utils } from "pixi.js";
+/* import { utils } from "pixi.js";
 
 export class Wheel {
     constructor(imagePath) {
@@ -41,4 +41,4 @@ export class Wheel {
   
   // Crear una instancia de la clase y configurar el fondo zoomable con rueda
   const imagePath = 'ruta/de/imagen.jpg';
-  const zoomableBackground = new ZoomableBackground(imagePath);
+  const zoomableBackground = new ZoomableBackground(imagePath); */
