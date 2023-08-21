@@ -14,7 +14,7 @@ export class TickerScene extends Container implements IUpdateable{
         this.Fondo = Sprite.from("SFMap");
 
 
-        this.Fondo.scale.set(2,2);
+        this.Fondo.scale.set(1.91,1.91);
         this.Fondo.anchor.set(0.5);
         this.Fondo.position.set(WIDTH/2,HEIGHT/2);
 
@@ -48,7 +48,14 @@ export class TickerScene extends Container implements IUpdateable{
     this.scale.x = 1;
     this.scale.y = 1;
     console.log("mouse up", this);
+
+    addEventListener("wheel", (event) => {
+      this.scale.x -= event.deltaY *0.001;
+      this.scale.y -= event.deltaY *0.001;  
+    });
+  
  }
+
 
 } 
 
