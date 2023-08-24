@@ -44,13 +44,9 @@ window.addEventListener("resize",()=>{
 
 window.dispatchEvent(new Event("resize"));
 
-//Loader add
 Loader.shared.add(assets);
 
 Loader.shared.onComplete.add(()=>{
-
-	//const myScene0 = new Scene();
-	//app.stage.addChild(myScene0);
 
 	//Mostrar en pantalla
 	const myScene = new TickerScene();
@@ -62,35 +58,4 @@ Loader.shared.onComplete.add(()=>{
 
 })
 
-//Loader load
 Loader.shared.load();
-
-
-
-
-/*
-	//Sprite
-	const clampy: Sprite = Sprite.from("clampy.png");
-	const Estrella: Sprite = Sprite.from("Estrella.png");
-
-	//Posicion
-	clampy.x = app.screen.width / 4;
-	clampy.y = app.screen.height / 6;
-	clampy.anchor.set(0.5);
-	Estrella.position.set(500,50);
-
-	Estrella.toGlobal(new Point());
-
-	//Rotar
-	clampy.angle = 340;
-
-	//Tamaño
-	clampy.width=62;
-	clampy.height=50;
-	Estrella.scale.set(0.1,0.1);
-	
-	//const aux = Estrella.parent.toLocal(new Point(330,220));
-
-	//Consola
-	console.log("Clampy:", clampy.height, clampy.width, "Estrella:", Estrella.height, Estrella.width, Estrella.toGlobal(new Point()));
-	*/

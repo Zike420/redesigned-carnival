@@ -13,7 +13,6 @@ export class TickerScene extends Container implements IUpdateable{
         
         this.Fondo = Sprite.from("SFMap");
 
-
         this.Fondo.scale.set(1.91,1.91);
         this.Fondo.anchor.set(0.5);
         this.Fondo.position.set(WIDTH/2,HEIGHT/2);
@@ -23,8 +22,7 @@ export class TickerScene extends Container implements IUpdateable{
         this.Fondo.on("pointerdown", this.onPointerDown, this);
         this.Fondo.on("mouseup", this.onMouseUp, this);
 
-        this.addChild(this.Fondo);;
-
+        this.addChild(this.Fondo);
     }
     
 
