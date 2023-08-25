@@ -1,22 +1,23 @@
 import { Container, Texture } from "pixi.js";
-import { IUpdateable } from "../IUpdateable";
+import { HEIGHT, WIDTH } from "..";
 import { Button } from "../UI/Button";
 
-export class Menu extends Container implements IUpdateable{
+export class Menu extends Container{
 
     private play : Button;
     private img : Texture;
+    private img1 : Texture;
+    private img2 : Texture;
+
     constructor(){
         super();
-        this.img = Texture.from("SFMap");
-        this.play = new Button(this.img, this.img, this.img);
+        this.img = Texture.from("Configuracion");
+        this.img1 = Texture.from("Configuracion1");
+        this.img2 = Texture.from("Configuracion2");
+        this.play = new Button(this.img, this.img1, this.img2);
+        this.play.position.set(WIDTH/2, HEIGHT/2)
         this.addChild(this.play);
 
     }
-    update(deltaTime: number, deltaFrame?: number | undefined): void {
-        throw new Error("Method not implemented.");
-    }
-
-
 
 }
