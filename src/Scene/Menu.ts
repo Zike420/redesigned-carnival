@@ -1,7 +1,8 @@
-import { Container, Sprite, Texture } from "pixi.js";
+import { Container, Texture } from "pixi.js";
+import { IUpdateable } from "../IUpdateable";
 import { Button } from "../UI/Button";
 
-export class Menu extends Container{
+export class Menu extends Container implements IUpdateable{
 
     private play : Button;
     private img : Texture;
@@ -11,6 +12,9 @@ export class Menu extends Container{
         this.play = new Button(this.img, this.img, this.img);
         this.addChild(this.play);
 
+    }
+    update(deltaTime: number, deltaFrame?: number | undefined): void {
+        throw new Error("Method not implemented.");
     }
 
 
