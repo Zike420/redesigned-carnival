@@ -8,7 +8,11 @@ import { GameOver } from './GameOver';
 export class TickerScene extends Container implements IUpdateable{
 
     private Fondo : Sprite;
-
+    
+    private isDragging = false;
+    private offsetX = 0;
+    private offsetY = 0;
+    
     private startTime = Date.now();
     private timerInterval: string | number | NodeJS.Timeout | undefined;
     private timerText : Text;
@@ -25,9 +29,12 @@ export class TickerScene extends Container implements IUpdateable{
         this.Fondo.interactive = true;
         this.Fondo.on("wheel", this.onMouseWheel,this);
         this.Fondo.on("pointerdown", this.onPointerDown, this);
-        this.Fondo.on("mouseup", this.onMouseUp, this);
+        this.Fondo.on("pointerup", this.onPointerUp, this);
+        this.Fondo.on("pointermove", this.onPointerMove, this);
 
         this.addChild(this.Fondo);
+
+        
 
         //////////////////////////////
         this.timerText = new Text('Tiempo: 0', { fontSize: 24, fill: 0xffffff });
@@ -79,29 +86,51 @@ export class TickerScene extends Container implements IUpdateable{
       deltaTime;
   }
 
+
+  /////////////////////////////////
+
   private onMouseWheel(event: WheelEvent): void {
     this.scale.x -= event.deltaY * 0.1;
     this.scale.y -= event.deltaY * 0.1;
     console.log("wheel", this);
+    
   }
 
   private onPointerDown():void {
-    this.scale.x += this.scale.x * 0.1;
-    this.scale.y += this.scale.y * 0.1;
-    console.log("point down", this);
+    this.isDragging = true;
+    addEventListener("pointerdown", (event) => {
+      this.offsetX = this.Fondo.x - this.x;
+      this.offsetY = this.Fondo.y - this.y;
+    });
+
   }
 
-  private onMouseUp():void {
+  private onPointerMove():void{
+    this.isDragging = false;
+  }
+
+  private onPointerUp():void {
     this.scale.x = 1;
     this.scale.y = 1;
-    console.log("mouse up", this);
+    console.log("pointerup", this);
 
     addEventListener("wheel", (event) => {
       this.scale.x -= event.deltaY *0.001;
-      this.scale.y -= event.deltaY *0.001;  
+      this.scale.y -= event.deltaY *0.001; 
+      if(this.scale.x <= 1 ){
+        this.scale.x +=0.1;
+        this.scale.y +=0.1; 
+      } else if(this.scale.x >= 2.6){
+        this.scale.x -=0.1;
+        this.scale.y -=0.1;
+      }
+      
+      console.log(this.scale.x, this.scale.y);
     });
   
   }
+
+  ////////////////////////////////
 
   GameOver() {
     // Cambiar a la escena de juego
