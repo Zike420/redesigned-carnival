@@ -1,5 +1,6 @@
 import { Container, Graphics } from "pixi.js";
 
+
 export class Punto extends Container{
     private PX : any; 
     private PY : any;
@@ -26,3 +27,4 @@ export class Punto extends Container{
     }
     
 }
+
