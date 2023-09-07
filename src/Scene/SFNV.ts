@@ -2,16 +2,19 @@ import {Container, Sprite, Text} from "pixi.js";
 import { HEIGHT, WIDTH } from "..";
 import { IUpdateable } from "../IUpdateable";
 import { GameOver } from './GameOver';
+import { Punto } from "./Punto";
 //import { PhysicsContainer } from "../Containers/PhysicsContainer";
 
 
 export class TickerScene extends Container implements IUpdateable{
 
     private Fondo : Sprite;
-    
+   
+    /*
     private isDragging = false;
     private offsetX = 0;
     private offsetY = 0;
+    */
     
     private startTime = Date.now();
     private timerInterval: string | number | NodeJS.Timeout | undefined;
@@ -34,6 +37,9 @@ export class TickerScene extends Container implements IUpdateable{
 
         this.addChild(this.Fondo);
 
+        const hola = new Punto();
+        this.addChild(hola);
+        
         
 
         //////////////////////////////
@@ -97,16 +103,17 @@ export class TickerScene extends Container implements IUpdateable{
   }
 
   private onPointerDown():void {
+    /*
     this.isDragging = true;
     addEventListener("pointerdown", (event) => {
       this.offsetX = this.Fondo.x - this.x;
       this.offsetY = this.Fondo.y - this.y;
     });
-
+    */
   }
 
   private onPointerMove():void{
-    this.isDragging = false;
+    //this.isDragging = false;
   }
 
   private onPointerUp():void {
