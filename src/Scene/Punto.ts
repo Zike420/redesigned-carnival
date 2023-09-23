@@ -21,10 +21,7 @@ export class Punto extends Container{
 
     }
 
-    private posicion(px:any, py:any) : void{
-        this.PX = px;
-        this.PY = py;
-    }
+   
     
 }
 

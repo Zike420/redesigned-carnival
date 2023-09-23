@@ -142,8 +142,17 @@ export class TickerScene extends Container implements IUpdateable{
   GameOver() {
     // Cambiar a la escena de juego
     const gameOver = new GameOver();
-    this.removeChildren();
+    this.scale.x = 1;
+    this.scale.y = 1;
+     
     this.addChild(gameOver);
+    
+    // Esto quita la ventana de su contenedor principal
+    //this.parent.removeChild(this); 
+
+    // Limpia las referencias a la ventana
+    this.destroy({ children: true, texture: true, baseTexture: true });
+
   }
 
 
