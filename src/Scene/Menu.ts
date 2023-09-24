@@ -1,9 +1,12 @@
-import { Container, TextStyle, Texture, Text, Sprite } from "pixi.js";
-import { HEIGHT, WIDTH } from "..";
+import { TextStyle, Texture, Text, Sprite } from "pixi.js";
 import { Button } from "../UI/Button";
+import { SceneManager} from "./SceneManager";
+import { SceneBase } from "./SceneBase";
 import { TickerScene } from './SFNV';
 
-export class Menu extends Container{
+export class Menu extends SceneBase{
+    
+    public update(): void {}
 
     private play : Button;
     private img : Texture;
@@ -16,7 +19,7 @@ export class Menu extends Container{
         this.img1 = Texture.from("Configuracion1");
         this.img2 = Texture.from("Configuracion2");
         this.play = new Button(this.img, this.img1, this.img2);
-        this.play.position.set(WIDTH/2, HEIGHT/2)
+        this.play.position.set(SceneManager.WIDTH/2, SceneManager.HEIGHT/2)
         this.addChild(this.play);
 
         const textStyle1 = new TextStyle({
@@ -29,24 +32,24 @@ export class Menu extends Container{
 
         //FONDO
         const background = Sprite.from('SFMap');
-        background.width = WIDTH;
-        background.height = HEIGHT;
+        background.width = SceneManager.WIDTH;
+        background.height = SceneManager.HEIGHT;
         this.addChild(background);
 
         //TITULO
         const titleText : Text = new Text('Mini Bus', textStyle1);
-        titleText.position.x = WIDTH / 2 - titleText.width / 2;
+        titleText.position.x = SceneManager.WIDTH / 2 - titleText.width / 2;
         titleText.position.y = 50;
         this.addChild(titleText);
 
         //BOTONES
         const startText = new Text('Iniciar Juego', textStyle1);
-        startText.position.x = WIDTH / 2 - startText.width / 2;
+        startText.position.x = SceneManager.WIDTH / 2 - startText.width / 2;
         startText.position.y = 500;
         this.addChild(startText);
 
         const optionsText = new Text('Opciones', textStyle1);
-        optionsText.position.x = WIDTH / 2 - optionsText.width / 2;
+        optionsText.position.x = SceneManager.WIDTH / 2 - optionsText.width / 2;
         optionsText.position.y = 600;
         this.addChild(optionsText);
 
@@ -62,8 +65,6 @@ export class Menu extends Container{
 
     startGame() {
         // Cambiar a la escena de juego
-        const gameScene = new TickerScene();
-        this.removeChildren();
-        this.addChild(gameScene);
+        SceneManager.changeScene(new TickerScene());
     }
 }

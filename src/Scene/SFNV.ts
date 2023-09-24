@@ -1,8 +1,8 @@
 import {Container, Sprite, Text} from "pixi.js";
-import { HEIGHT, WIDTH } from "..";
 import { IUpdateable } from "../IUpdateable";
 import { GameOver } from './GameOver';
 import { Punto } from "./Punto";
+import { SceneManager } from "./SceneManager";
 //import { PhysicsContainer } from "../Containers/PhysicsContainer";
 
 
@@ -27,7 +27,7 @@ export class TickerScene extends Container implements IUpdateable{
 
         this.Fondo.scale.set(1.91,1.91);
         this.Fondo.anchor.set(0.5);
-        this.Fondo.position.set(WIDTH/2,HEIGHT/2);
+        this.Fondo.position.set(SceneManager.WIDTH/2,SceneManager.HEIGHT/2);
 
         this.Fondo.interactive = true;
         this.Fondo.on("wheel", this.onMouseWheel,this);
@@ -141,17 +141,7 @@ export class TickerScene extends Container implements IUpdateable{
 
   GameOver() {
     // Cambiar a la escena de juego
-    const gameOver = new GameOver();
-    this.scale.x = 1;
-    this.scale.y = 1;
-     
-    this.addChild(gameOver);
-    
-    // Esto quita la ventana de su contenedor principal
-    //this.parent.removeChild(this); 
-
-    // Limpia las referencias a la ventana
-    this.destroy({ children: true, texture: true, baseTexture: true });
+    SceneManager.changeScene(new GameOver());
 
   }
 

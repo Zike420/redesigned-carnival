@@ -1,12 +1,13 @@
-import { Application, Container } from "pixi.js";
+import { Application, Ticker } from "pixi.js";
 import { Keyboard } from "../UI/Keyboard";
+import { SceneBase } from "./SceneBase";
 
 export namespace SceneManager{
 
     export const WIDTH = 1920;
     export const HEIGHT = 1080;
 
-    let currentScene:Container = undefined;
+    let currentScene:SceneBase;
     let app:Application;
 
     export function initialize(){
@@ -52,13 +53,20 @@ export namespace SceneManager{
         })
 
         window.dispatchEvent(new Event("resize"));
+
+        Ticker.shared.add(update);
     }
 
-    export function changeScene(newScene:Container){
+    export function changeScene(newScene:SceneBase){
         if(currentScene){
             currentScene.destroy();
         }
         currentScene = newScene;
         app.stage.addChild(currentScene);
+    }
+
+    function update(framePassed:number){
+       
+        currentScene?.update(framePassed, Ticker.shared.elapsedMS);
     }
 }
